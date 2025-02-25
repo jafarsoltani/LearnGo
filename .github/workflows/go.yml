@@ -30,7 +30,7 @@ jobs:
     #  working-directory: ./booking-app
 
     - name: Upload binary
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: booking-app-binary
         path: ./booking-app/booking-app-binary
