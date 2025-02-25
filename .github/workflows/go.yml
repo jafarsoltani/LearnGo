@@ -22,9 +22,15 @@ jobs:
         go-version: '1.24'
 
     - name: Build
-      run: go build -v .
+      run: go build -v -o booking-app-binary .
       working-directory: ./booking-app
 
     #- name: Test
     #  run: go test -v ./...
     #  working-directory: ./booking-app
+
+    - name: Upload binary
+      uses: actions/upload-artifact@v3
+      with:
+        name: booking-app-binary
+        path: ./booking-app/booking-app-binary
