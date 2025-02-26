@@ -33,10 +33,16 @@ jobs:
     #  run: go test -v ./...
     #  working-directory: ./booking-app
 
-    - name: Upload binaries
+    - name: Upload booking-app binaries
       uses: actions/upload-artifact@v4
       with:
-        name: upload booking-app-binary and web-service-gin-binary
-        path: |
+        name: upload booking-app-binary
+        path: 
           ./booking-app/booking-app-binary
+
+    - name: Upload web-service-gin binaries
+      uses: actions/upload-artifact@v4
+      with:
+        name: upload web-service-gin-binary
+        path: 
           ./web-servive-gin/web-service-gin-binary
