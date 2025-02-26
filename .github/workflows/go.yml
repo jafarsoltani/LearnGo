@@ -50,3 +50,10 @@ jobs:
         name: upload web-service-gin-binary
         path: 
           ./web-service-gin/web-service-gin-binary
+
+    - name: Upload gin-bookstore binaries
+      uses: actions/upload-artifact@v4
+      with:
+        name: upload gin-bookstore-binary
+        path: 
+          ./gin-bookstore/gin-bookstore-binary
