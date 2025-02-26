@@ -45,4 +45,4 @@ jobs:
       with:
         name: upload web-service-gin-binary
         path: 
-          ./web-servive-gin/web-service-gin-binary
+          ./web-service-gin/web-service-gin-binary
