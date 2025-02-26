@@ -29,6 +29,10 @@ jobs:
       run: go build -v -o web-service-gin-binary .
       working-directory: ./web-service-gin
 
+    - name: Build gin-bookstore
+      run: go build -v -o gin-bookstore-binary .
+      working-directory: ./gin-bookstore
+
     #- name: Test
     #  run: go test -v ./...
     #  working-directory: ./booking-app
