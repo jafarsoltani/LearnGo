@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	"postgres-demo/models"
 
 	_ "github.com/lib/pq"
 )
@@ -25,6 +26,28 @@ type User struct {
 }
 
 func main() {
+
+	userGorm := true
+
+	if !userGorm {
+		connectToPostgresWithSql()
+		defer db.Close()
+		//addNewRecord()
+		//updateRecord()
+		//fetchRecord(3)
+		//deleteRecord(6)
+		fetchAllRecords()
+	} else {
+		models.ConnectToDatabase()
+		models.CreateUser()
+		models.FetchAllUsers()
+		//defer models.Postgres_db.Close()
+
+	}
+
+}
+
+func connectToPostgresWithSql() {
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s dbname=%s sslmode=disable",
 		host, port, user, dbname)
 	var err error
@@ -32,20 +55,12 @@ func main() {
 	if err != nil {
 		panic(fmt.Sprintf("Failed to connect to database! %v", err))
 	}
-	defer db.Close()
 
 	err = db.Ping()
 	if err != nil {
 		panic(fmt.Sprintf("Failed to ping database! %v", err))
 	}
 	fmt.Println("Successfully connected to database!")
-
-	//addNewRecord()
-	//updateRecord()
-	//fetchRecord(3)
-	//deleteRecord(6)
-	fetchAllRecords()
-
 }
 
 func addNewRecord() {
