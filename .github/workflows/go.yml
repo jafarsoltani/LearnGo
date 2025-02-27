@@ -33,6 +33,11 @@ jobs:
       run: go build -v -o gin-bookstore-binary .
       working-directory: ./gin-bookstore
 
+    - name: Build postgres-demo
+      run: go build -v -o postgres-demo-binary .
+      working-directory: ./postgres-demo
+
+
     #- name: Test
     #  run: go test -v ./...
     #  working-directory: ./booking-app
@@ -57,3 +62,10 @@ jobs:
         name: upload gin-bookstore-binary
         path: 
           ./gin-bookstore/gin-bookstore-binary
+
+    - name: Upload postgres-demo binaries
+      uses: actions/upload-artifact@v4
+      with:
+        name: upload postgres-demo-binary
+        path: 
+          ./postgres-demo/postgres-demo-binary
