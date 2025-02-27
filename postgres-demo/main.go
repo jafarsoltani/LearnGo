@@ -42,8 +42,9 @@ func main() {
 
 	//addNewRecord()
 	//updateRecord()
-	fetchRecord(3)
+	//fetchRecord(3)
 	//deleteRecord(6)
+	fetchAllRecords()
 
 }
 
@@ -90,6 +91,29 @@ func fetchRecord(id int) {
 		fmt.Println(id, user.FirstName, user.LastName, user.Email)
 	default:
 		panic(fmt.Sprintf("Failed to fetch a row! %v", err))
+	}
+}
+
+func fetchAllRecords() {
+	row, err := db.Query("SELECT id, first_name, last_name, email FROM users;")
+	if err != nil {
+		panic(fmt.Sprintf("Failed to fetch rows! %v", err))
+	}
+	defer row.Close()
+
+	for row.Next() {
+		var id int
+		var firstName, lastName, email string
+		err := row.Scan(&id, &firstName, &lastName, &email)
+		if err != nil {
+			panic(fmt.Sprintf("Failed to scan a row! %v", err))
+		}
+		fmt.Println(id, firstName, lastName, email)
+	}
+
+	err = row.Err()
+	if err != nil {
+		panic(fmt.Sprintf("Failed to fetch all rows! %v", err))
 	}
 }
 
