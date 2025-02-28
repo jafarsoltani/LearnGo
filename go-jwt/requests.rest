@@ -1,0 +1,10 @@
+GET http://localhost:8080
+
+###
+
+POST http://localhost:8080/signup 
+Content-Type: application/json
+{
+    "email": "jafar@solt.com",
+    "password": "123456"
+}
