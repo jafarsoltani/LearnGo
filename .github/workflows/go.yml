@@ -37,6 +37,10 @@ jobs:
       run: go build -v -o postgres-demo-binary .
       working-directory: ./postgres-demo
 
+    - name: Build go-jwt
+      run: go build -v -o go-jwt-binary .
+      working-directory: ./go-jwt
+
 
     #- name: Test
     #  run: go test -v ./...
@@ -69,3 +73,10 @@ jobs:
         name: upload postgres-demo-binary
         path: 
           ./postgres-demo/postgres-demo-binary
+
+    - name: Upload go-jwt binaries
+      uses: actions/upload-artifact@v4
+      with:
+        name: upload go-jwt-binary
+        path: 
+          ./go-jwt/go-jwt-binary
